@@ -137,7 +137,7 @@ body {
 }
 
 .container-portal-berita {
-    background-color: #DCDCDC;
+    background-color: #dcdcdc;
     min-width: 100%;
     width: auto;
     height: 480px;
@@ -255,7 +255,7 @@ body {
     font-size: 40px;
 }
 
-.container-card-content-structure {
+/* .container-card-content-structure {
     display: flex;
     justify-content: space-around;
 }
@@ -294,7 +294,43 @@ body {
 .jobdesk-structure p {
     text-align: center;
     font-size: 14px;
+} */
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
+
+.card-structure{
+    width: 300px;
+    background-color: #dcdcdc;
+    /* overflow: hidden; */
+    margin: 20px;
+    border-radius: 8px;
+}
+
+.card-structure img{
+    width: 100%;
+    height: auto;
+}
+
+.card-content-structure{
+    padding: 15px;
+    text-align: center;
+}
+
+.card-structure h3{
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.card-structure p {
+    font-size: 15px;
+    color: #00000085;
+}
+
+
 
 @media screen and (max-width: 476px) {
     .navigation {
