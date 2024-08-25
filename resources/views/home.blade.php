@@ -17,7 +17,7 @@
         </div>
     </div>
     <div class="container-portal-berita">
-        <div class="container-card flex flex-wrap">
+        <div class="container-card">
             <div class="card">
                 <div class="image-card">
                     <img src="img/bakar1.jpg" alt="">
