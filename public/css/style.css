@@ -1,17 +1,16 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Libre Franklin',
-            sans-serif;
+    font-family: "Libre Franklin", sans-serif;
 }
 
-body {
+/* body {
     width: 100vw;
     min-height: 100%;
     height: auto;
     overflow-x: hidden;
     padding-top: 80px;
-}
+} */
 
 .navigation {
     display: flex;
@@ -31,7 +30,7 @@ body {
 .brand {
     display: flex;
     align-items: center;
-    padding-left: 50px;   
+    padding-left: 50px;
 }
 
 .logo img {
@@ -64,10 +63,10 @@ body {
     cursor: pointer;
 }
 
-.menu li:hover{
+.menu li:hover {
     background-color: #278d08;
     border-radius: 40px;
-    transition-delay: .1s;
+    transition-delay: 0.1s;
 }
 
 .menu ul li {
@@ -133,7 +132,7 @@ body {
 .overlay .button:hover {
     background-color: #278d08;
     color: white;
-    transition-delay: .1s;
+    transition-delay: 0.1s;
 }
 
 .container-portal-berita {
@@ -146,7 +145,7 @@ body {
     display: inline-flex;
     justify-content: space-around;
     width: 1440px;
-    background-color: #DCDCDC;
+    background-color: #dcdcdc;
 }
 
 .card {
@@ -183,7 +182,7 @@ body {
 .activity-button button:hover {
     background-color: #278d08;
     color: white;
-    transition-delay: .1s;
+    transition-delay: 0.1s;
 }
 
 .activity-button button {
@@ -211,13 +210,16 @@ body {
     height: 100%;
 }
 
-.address, .contact, .social-media {
+.address,
+.contact,
+.social-media {
     width: 250px;
     margin: 50px;
-    
 }
 
-.title-address h3, .title-contact h3, .title-social-media h3 {
+.title-address h3,
+.title-contact h3,
+.title-social-media h3 {
     font-size: 22px;
     margin-bottom: 15px;
 }
@@ -255,13 +257,13 @@ body {
     font-size: 40px;
 }
 
-.card-container{
+.card-container {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
 }
 
-.card-structure{
+.card-structure {
     width: 300px;
     background-color: #dcdcdc;
     overflow: hidden;
@@ -269,17 +271,17 @@ body {
     border-radius: 8px;
 }
 
-.card-structure img{
+.card-structure img {
     width: 100%;
     height: auto;
 }
 
-.card-content-structure{
+.card-content-structure {
     padding: 15px;
     text-align: center;
 }
 
-.card-structure h3{
+.card-structure h3 {
     font-size: 20px;
     margin-bottom: 8px;
 }
@@ -288,8 +290,6 @@ body {
     font-size: 15px;
     color: #00000085;
 }
-
-
 
 @media screen and (max-width: 476px) {
     .navigation {
@@ -318,7 +318,7 @@ body {
     .overlay {
         top: 30%;
     }
-     .overlay h1 {
+    .overlay h1 {
         font-size: 40px;
     }
     .overlay p {
