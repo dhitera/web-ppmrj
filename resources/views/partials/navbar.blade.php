@@ -20,9 +20,19 @@
     </div>
 </nav> --}}
 
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const collapseToggle = document.querySelector("[data-collapse-toggle='navbar-default']");
+        const navbarDefault = document.getElementById("navbar-default");
 
+        collapseToggle.addEventListener("click", function() {
+        console.log("Navbar toggle clicked");
+        navbarDefault.classList.toggle("hidden");
+        });
+    });
+</script>
 
-<nav class="bg-[#333] border-gray-200 dark:bg-[#333] text-white">
+<nav class="bg-[#333] border-gray-800 text-white sticky w-full z-20 top-0 start-0 border-b">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
             <img src="img/logoppm.png" class="h-10" alt="Logo PPMRJ Bandung" />
@@ -44,27 +54,27 @@
 
                 <li>
                     <a href="/"
-                        class="block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#278d08] md:p-0 ">Home</a>
+                        class="block py-2 px-3 rounded hover:bg-[#278d08] md:hover:bg-transparent md:border-0 md:hover:text-[#278d08] md:p-0 ">Home</a>
                 </li>
                 <li>
                     <a href="/about"
-                        class="block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#278d08] md:p-0 ">About</a>
+                        class="block py-2 px-3 rounded hover:bg-[#278d08] md:hover:bg-transparent md:border-0 md:hover:text-[#278d08] md:p-0 ">About</a>
                 </li>
                 <li>
                     <a href="/structure"
-                        class="block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#278d08] md:p-0 ">Structure</a>
+                        class="block py-2 px-3 rounded hover:bg-[#278d08] md:hover:bg-transparent md:border-0 md:hover:text-[#278d08] md:p-0 ">Structure</a>
                 </li>
                 <li>
                     <a href="/activity"
-                        class="block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#278d08] md:p-0 ">Activity</a>
+                        class="block py-2 px-3 rounded hover:bg-[#278d08] md:hover:bg-transparent md:border-0 md:hover:text-[#278d08] md:p-0 ">Activity</a>
                 </li>
                 <li>
                     <a href="/registration"
-                        class="block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#278d08] md:p-0 ">Registration</a>
+                        class="block py-2 px-3 rounded hover:bg-[#278d08] md:hover:bg-transparent md:border-0 md:hover:text-[#278d08] md:p-0 ">Registration</a>
                 </li>
                 <li>
                     <a href="/announcement"
-                        class="block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#278d08] md:p-0 ">Announcement</a>
+                        class="block py-2 px-3 rounded hover:bg-[#278d08] md:hover:bg-transparent md:border-0 md:hover:text-[#278d08] md:p-0 ">Announcement</a>
                 </li>
             </ul>
         </div>
