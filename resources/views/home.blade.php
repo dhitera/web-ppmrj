@@ -2,6 +2,7 @@
 
 @section('container')
 
+{{-- Hero Section --}}
 <div class="bg-auto bg-center bg-no-repeat bg-gray-500 bg-blend-multiply md:h-[150vh] md:bg-cover"
     style="background-image: url('img/foto-ppm.jpg')">
     <div class="px-4 mx-5 md:mx-20 md:text-left py-40 w-1/2">
@@ -20,8 +21,56 @@
     </div>
 </div>
 
-<div class="p-4 flex flex-row justify-around overflow-x-auto gap-2 snap-mandatory snap-x">
+{{-- About Section --}}
+<div id="about"></div>
+<div>
+    <p class="text-center text-4xl font-semibold py-5 mt-16 uppercase">About Us</p>
+    <p class="mx-10 md:mx-24 text-center font-semibold text-gray-600 text-lg md:text-2xl">Pondok Pesantren Mahasiswa
+        Roudhotul
+        Jannah atau
+        <mark class="px-2 text-white bg-gradient-to-r from-green-600 to-lime-500 rounded">PPMRJ</mark> adalah tempat
+        untuk mahasiswa mempelajari ilmu
+        agama dan akademis dengan lingkungan yang kondusif.
+    </p>
+    <div class="flex flex-wrap justify-center my-12 gap-5 md:gap-20">
+        <div
+            class="size-64 bg-cover bg-center flex flex-wrap justify-center rounded-lg bg-gradient-to-r from-green-600 to-lime-500 group transition-all duration-300 ease-in-out opacity-90 hover:scale-105 hover:opacity-100 hover:shadow-xl">
+            <img src="img/icons/book.svg" alt="Book Icon"
+                class="w-14 h-auto text-white scale-125 translate-y-3/4 transition-all duration-300 ease-in-out group-hover:scale-105 group-hover:translate-y-0">
+            <p
+                class="text-white font-semibold transition-all duration-300 ease-in-out opacity-0 group-hover:opacity-100 text-center mx-3">
+                Kurikulum yang sudah diatur sehingga dapat mempelajari ilmu agama sembari melaksanakan
+                perkuliahan di kampus</p>
+        </div>
+        <div
+            class="size-64 bg-cover bg-center flex flex-wrap justify-center rounded-lg bg-gradient-to-r from-green-600 to-lime-500 group transition-all duration-300 ease-in-out opacity-90 hover:scale-105 hover:opacity-100 hover:shadow-xl">
+            <img src="img/icons/community.svg" alt="Community Icon"
+                class="w-14 h-auto text-white scale-150 translate-y-3/4 transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:translate-y-0">
+            <p
+                class="text-white font-semibold transition-all duration-300 ease-in-out opacity-0 group-hover:opacity-100 text-center mx-3">
+                Terdapat organisasi dan komunitas yang dapat membuat mahasiswa meningkatkan skill-nya baik soft skill
+                maupun hard skill</p>
+        </div>
+        <div
+            class="size-64 bg-cover bg-center flex flex-wrap justify-center rounded-lg bg-gradient-to-r from-green-600 to-lime-500 group transition-all duration-300 ease-in-out opacity-90 hover:scale-105 hover:opacity-100 hover:shadow-xl">
+            <img src="img/icons/fire.svg" alt="Fire Icon"
+                class="w-14 h-auto text-white scale-150 translate-y-3/4 transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:translate-y-0">
+            <p
+                class="text-white font-semibold transition-all duration-300 ease-in-out opacity-0 group-hover:opacity-100 text-center mx-3">
+                Tidak hanya mengaji, beragam kegiatan dan juga acara sering dilaksanakan oleh PPM, baik dilakukan
+                didalam maupun diluar PPM</p>
+        </div>
 
+    </div>
+</div>
+
+
+
+{{-- Activity Section --}}
+
+<p class="text-center text-4xl font-semibold uppercase py-3">
+    Aktivitas Terbaru</p>
+<div class="p-4 flex flex-row justify-around overflow-x-auto gap-2 snap-mandatory snap-x">
 
 
     <div class="w-full md:w-1/2 xl:w-80 bg-white border border-gray-200 rounded-lg shadow flex-none snap-center">
@@ -75,148 +124,13 @@
 
         </div>
     </div>
-
-    {{-- <div class="w-80 h-96 bg-gray-200 border border-gray-200 rounded-lg shadow">
-        <a href="#">
-            <img class="rounded-t-lg" src="img/bakar1.jpg" alt="" />
-        </a>
-        <div class="p-5">
-            <a href="#">
-                <h5 class="mb-2 text-md md:text-md md:text-xl font-bold tracking-tight text-gray-900 ">
-                    Makan Bersama</h5>
-            </a>
-            <p class="mb-3 text-xs font-normal text-gray-700  text-wrap">Acara
-                bakar-bakar setelah qurban
-                merupakan tradisi yang selalu dinantikan oleh masyarakat, terutama pada hari raya Idul Adha. Setelah
-                proses penyembelihan hewan qurban dan pembagian daging selesai, keluarga dan tetangga berkumpul di
-                halaman rumah atau di tempat terbuka untuk membakar daging qurban bersama-sama.</p>
-        </div>
-    </div>
-    <div class="w-80 h-96 bg-gray-200 border border-gray-200 rounded-lg shadow">
-        <a href="#">
-            <img class="rounded-t-lg" src="img/bakar1.jpg" alt="" />
-        </a>
-        <div class="p-5">
-            <a href="#">
-                <h5 class="mb-2 text-md md:text-xl font-bold tracking-tight text-gray-900 ">Makan Bersama
-                </h5>
-            </a>
-            <p class="mb-3 text-xs font-normal text-gray-700  text-wrap">Acara
-                bakar-bakar setelah qurban
-                merupakan tradisi yang selalu dinantikan oleh masyarakat, terutama pada hari raya Idul Adha. Setelah
-                proses penyembelihan hewan qurban dan pembagian daging selesai, keluarga dan tetangga berkumpul di
-                halaman rumah atau di tempat terbuka untuk membakar daging qurban bersama-sama.</p>
-        </div>
-    </div>
-    <div class="w-80 h-96 bg-gray-200 border border-gray-200 rounded-lg shadow">
-        <a href="#">
-            <img class="rounded-t-lg" src="img/bakar1.jpg" alt="" />
-        </a>
-        <div class="p-5">
-            <a href="#">
-                <h5 class="mb-2 text-md md:text-xl font-bold tracking-tight text-gray-900 ">Makan Bersama
-                </h5>
-            </a>
-            <p class="mb-3 text-xs font-normal text-gray-700  text-wrap">Acara
-                bakar-bakar setelah qurban
-                merupakan tradisi yang selalu dinantikan oleh masyarakat, terutama pada hari raya Idul Adha. Setelah
-                proses penyembelihan hewan qurban dan pembagian daging selesai, keluarga dan tetangga berkumpul di
-                halaman rumah atau di tempat terbuka untuk membakar daging qurban bersama-sama.</p>
-        </div>
-    </div>
-    <div class="w-80 h-96 bg-gray-200 border border-gray-200 rounded-lg shadow">
-        <a href="#">
-            <img class="rounded-t-lg" src="img/bakar1.jpg" alt="" />
-        </a>
-        <div class="p-5">
-            <a href="#">
-                <h5 class="mb-2 text-md md:text-xl font-bold tracking-tight text-gray-900 ">Makan Bersama
-                </h5>
-            </a>
-            <p class="mb-3 text-xs font-normal text-gray-700  text-wrap">Acara
-                bakar-bakar setelah qurban
-                merupakan tradisi yang selalu dinantikan oleh masyarakat, terutama pada hari raya Idul Adha. Setelah
-                proses penyembelihan hewan qurban dan pembagian daging selesai, keluarga dan tetangga berkumpul di
-                halaman rumah atau di tempat terbuka untuk membakar daging qurban bersama-sama.</p>
-        </div> --}}
-    </div>
-
-
-
+</div>
+<div class="flex justify-center">
+    <button type="button"
+        class="text-white bg-gradient-to-r from-green-600 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 font-medium rounded-full text-base px-5 py-2.5 text-center my-3">Info
+        Kegiatan Lainnya
+    </button>
 </div>
 
-{{-- <div class="container-portal-berita">
-    <div class="container-card">
-        <div class="card">
-            <div class="image-card">
-                <img src="img/bakar1.jpg" alt="">
-            </div>
-            <div class="title-card">
-                <h3>Makan Bersama</h3>
-            </div>
-            <div class="deskription-card">
-                <p>Acara makan-makan setelah qurban merupakan momen yang selalu dinantikan oleh masyarakat,
-                    khususnya di
-                    hari raya Idul Adha. Setelah proses penyembelihan hewan qurban selesai, daging yang telah
-                    dibagikan
-                    ke seluruh warga, keluarga dan tetangga berkumpul untuk menikmati hidangan lezat bersama-sama.
-                </p>
-            </div>
-        </div>
-        <div class="card">
-            <div class="image-card">
-                <img src="img/bakar2.jpg" alt="">
-            </div>
-            <div class="title-card">
-                <h3>Bakar Bakar</h3>
-            </div>
-            <div class="deskription-card">
-                <p>Acara bakar-bakar setelah qurban merupakan tradisi yang selalu dinantikan oleh masyarakat,
-                    terutama
-                    pada hari raya Idul Adha. Setelah proses penyembelihan hewan qurban dan pembagian daging
-                    selesai,
-                    keluarga dan tetangga berkumpul di halaman rumah atau di tempat terbuka untuk membakar daging
-                    qurban
-                    bersama-sama.</p>
-            </div>
-        </div>
-        <div class="card">
-            <div class="image-card">
-                <img src="img/bakar3.jpg" alt="">
-            </div>
-            <div class="title-card">
-                <h3>Acara Bakar Bakar</h3>
-            </div>
-            <div class="deskription-card">
-                <p>Acara bakar-bakar setelah qurban merupakan tradisi yang selalu dinantikan oleh masyarakat,
-                    terutama
-                    pada hari raya Idul Adha. Setelah proses penyembelihan hewan qurban dan pembagian daging
-                    selesai,
-                    keluarga dan tetangga berkumpul di halaman rumah atau di tempat terbuka untuk membakar daging
-                    qurban
-                    bersama-sama.</p>
-            </div>
-        </div>
-        <div class="card">
-            <div class="image-card">
-                <img src="img/bakar4.jpg" alt="">
-            </div>
-            <div class="title-card">
-                <h3>Photoboot</h3>
-            </div>
-            <div class="deskription-card">
-                <p>Acara bakar-bakar setelah qurban merupakan tradisi yang selalu dinantikan oleh masyarakat,
-                    terutama
-                    pada hari raya Idul Adha. Setelah proses penyembelihan hewan qurban dan pembagian daging
-                    selesai,
-                    keluarga dan tetangga berkumpul di halaman rumah atau di tempat terbuka untuk membakar daging
-                    qurban
-                    bersama-sama.</p>
-            </div>
-        </div>
-    </div>
-    <div class="activity-button">
-        <a href="/activity"><button>Info Kegiatan Lainnya</button></a>
-    </div>
-</div> --}}
+
 @endsection

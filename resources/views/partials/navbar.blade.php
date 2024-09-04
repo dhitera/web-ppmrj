@@ -57,7 +57,7 @@
                         class="block py-2 px-3 rounded hover:bg-[#278d08] md:hover:bg-transparent md:border-0 md:hover:text-[#278d08] md:p-0 ">Home</a>
                 </li>
                 <li>
-                    <a href="/about"
+                    <a href="#about"
                         class="block py-2 px-3 rounded hover:bg-[#278d08] md:hover:bg-transparent md:border-0 md:hover:text-[#278d08] md:p-0 ">About</a>
                 </li>
                 <li>
