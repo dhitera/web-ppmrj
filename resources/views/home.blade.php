@@ -73,7 +73,7 @@
 <div class="p-4 flex flex-row justify-around overflow-x-auto gap-2 snap-mandatory snap-x">
 
 
-    <div class="w-full md:w-1/2 xl:w-80 bg-white border border-gray-200 rounded-lg shadow flex-none snap-center">
+    {{-- <div class="w-full md:w-1/2 xl:w-80 bg-white border border-gray-200 rounded-lg shadow flex-none snap-center">
         <a href="#">
             <img class="rounded-t-lg" src="img/bakar1.jpg" alt="" />
         </a>
@@ -84,52 +84,26 @@
                 proses penyembelihan hewan qurban dan pembagian daging selesai, keluarga dan tetangga berkumpul di
                 halaman rumah atau di tempat terbuka untuk membakar daging qurban bersama-sama.</p>
         </div>
-    </div>
+    </div> --}}
+    @foreach ($activity as $data)
     <div class="w-full md:w-1/2 xl:w-80 bg-white border border-gray-200 rounded-lg shadow flex-none snap-center">
-        <a href="#">
-            <img class="rounded-t-lg" src="img/bakar1.jpg" alt="" />
-        </a>
+        <img class="rounded-t-lg w-full h-48 object-cover"
+            src="@isset($data->image_url){{ asset('storage/' . $data->image_url) }}@else{{ asset('/img/blankphoto.jpeg') }}@endisset"
+            alt="{{ $data->title }}" />
         <div class="p-5">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">Makan Bersama</h5>
-            <p class="mb-3 text-xs font-normal text-gray-700 ">bakar-bakar setelah qurban
-                merupakan tradisi yang selalu dinantikan oleh masyarakat, terutama pada hari raya Idul Adha. Setelah
-                proses penyembelihan hewan qurban dan pembagian daging selesai, keluarga dan tetangga berkumpul di
-                halaman rumah atau di tempat terbuka untuk membakar daging qurban bersama-sama.</p>
-
+            <h5 class="mb-2 text-xl md:text-2xl font-bold tracking-tight text-gray-900">{{ $data->title }}</h5>
+            <p class="mb-3 text-xs font-normal text-gray-700 trix-content">{!!
+                Str::limit(strip_tags($data->description), 250, '...')
+                !!}</p>
         </div>
     </div>
-    <div class="w-full md:w-1/2 xl:w-80 bg-white border border-gray-200 rounded-lg shadow flex-none snap-center">
-        <a href="#">
-            <img class="rounded-t-lg" src="img/bakar1.jpg" alt="" />
-        </a>
-        <div class="p-5">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">Makan Bersama</h5>
-            <p class="mb-3 text-xs font-normal text-gray-700 ">bakar-bakar setelah qurban
-                merupakan tradisi yang selalu dinantikan oleh masyarakat, terutama pada hari raya Idul Adha. Setelah
-                proses penyembelihan hewan qurban dan pembagian daging selesai, keluarga dan tetangga berkumpul di
-                halaman rumah atau di tempat terbuka untuk membakar daging qurban bersama-sama.</p>
-
-        </div>
-    </div>
-    <div class="w-full md:w-1/2 xl:w-80 bg-white border border-gray-200 rounded-lg shadow flex-none snap-center">
-        <a href="#">
-            <img class="rounded-t-lg" src="img/bakar1.jpg" alt="" />
-        </a>
-        <div class="p-5">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">Makan Bersama</h5>
-            <p class="mb-3 text-xs font-normal text-gray-700 ">bakar-bakar setelah qurban
-                merupakan tradisi yang selalu dinantikan oleh masyarakat, terutama pada hari raya Idul Adha. Setelah
-                proses penyembelihan hewan qurban dan pembagian daging selesai, keluarga dan tetangga berkumpul di
-                halaman rumah atau di tempat terbuka untuk membakar daging qurban bersama-sama.</p>
-
-        </div>
-    </div>
+    @endforeach
 </div>
 <div class="flex justify-center">
-    <button type="button"
-        class="text-white bg-gradient-to-r from-green-600 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 font-medium rounded-full text-base px-5 py-2.5 text-center my-3">Info
+    <a href="{{ route('activities.index') }}"
+        class="text-white bg-gradient-to-r from-green-600 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 font-medium rounded-full text-lg px-5 py-2.5 text-center my-3">Info
         Kegiatan Lainnya
-    </button>
+    </a>
 </div>
 
 

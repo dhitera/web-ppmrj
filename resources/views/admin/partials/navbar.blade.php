@@ -124,8 +124,8 @@
                             class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group {{ Route::currentRouteName() === 'admin.structure' ? ' bg-gray-200' : 'hover:bg-gray-100'}}">Struktur</a>
                     </li>
                     <li>
-                        <a href="#"
-                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group {{ Route::currentRouteName() === '/' ? ' bg-gray-200' : 'hover:bg-gray-100'}}">Aktivitas</a>
+                        <a href="{{ route('admin.activity') }}"
+                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group {{ Route::currentRouteName() === 'admin.activity' ? ' bg-gray-200' : 'hover:bg-gray-100'}}">Aktivitas</a>
                     </li>
                     <li>
                         <a href="#"

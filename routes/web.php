@@ -1,15 +1,18 @@
 <?php
 
+use App\Models\Activity;
+use App\Models\Structure;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\StructureController;
-use App\Models\Structure;
 
 // ketika akses / maka menjalankan fungsi view
 Route::get('/', function () {
+    $data = Activity::latest()->paginate(4);
     return view('home', [
-        "title" => "Home"
+        "title" => "Home",
+        "activity" => $data
     ]);
 })->name('home');
 
@@ -37,4 +40,11 @@ Route::prefix('admin')->group(function () {
     Route::get('/structure', [StructureController::class, 'adminShow'])->name('admin.structure');
     Route::get('/structure/{id}/edit', [StructureController::class, 'edit'])->name('structure.edit');
     Route::post('/structure/{id}/update', [StructureController::class, 'update'])->name('structure.update');
+    // Activity
+    Route::get('/activity', [ActivityController::class, 'adminShow'])->name('admin.activity');
+    Route::get('/activity/add', [ActivityController::class, 'add'])->name('activity.add');
+    Route::get('/activity/{id}/edit', [ActivityController::class, 'edit'])->name('activity.edit');
+    Route::post('/activity', [ActivityController::class, 'store'])->name('activity.store');
+    Route::post('/activity/{id}/update', [ActivityController::class, 'update'])->name('activity.update');
+    Route::delete('/activity/delete/{id}', [ActivityController::class, 'delete'])->name('activity.delete');
 });
