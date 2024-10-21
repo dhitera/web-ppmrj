@@ -31,11 +31,14 @@ Route::get('/announcement', function () {
     ]);
 })->name('announcement');
 
+Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'index'])->name('login');
+Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login']);
+Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     // User List
-    Route::get('/admin-list', [AdminController::class, 'adminList'])->name('admin.adminList');
+    Route::get('/user-list', [AdminController::class, 'userList'])->name('admin.userList');
     // Structure
     Route::get('/structure', [StructureController::class, 'adminShow'])->name('admin.structure');
     Route::get('/structure/{id}/edit', [StructureController::class, 'edit'])->name('structure.edit');

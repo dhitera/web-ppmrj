@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Activity;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class ActivityController extends Controller
 {
-
     public function index()
     {
         $data = Activity::all();
@@ -21,16 +21,20 @@ class ActivityController extends Controller
     public function adminShow()
     {
         $data = Activity::all();
+        $user = Auth::user();
         return view('Admin/activity/index', [
             "title" => "Activities",
-            "activity" => $data
+            "activity" => $data,
+            "user" => $user
         ]);
     }
 
     public function add()
     {
+        $user = Auth::user();
         return view('Admin/activity/add', [
             "title" => "Add Activity",
+            "user" => $user
         ]);
     }
 
@@ -67,9 +71,11 @@ class ActivityController extends Controller
     public function edit($id)
     {
         $data = Activity::find($id);
+        $user = Auth::user();
         return view('Admin/activity/edit', [
             "title" => "Edit Activity",
-            "activity" => $data
+            "activity" => $data,
+            "user" => $user
         ]);
     }
 

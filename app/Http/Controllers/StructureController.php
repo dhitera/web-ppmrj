@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Structure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -22,18 +23,22 @@ class StructureController extends Controller
     public function adminShow()
     {
         $data = Structure::all();
+        $user = Auth::user();
         return view('Admin/structure/index', [
             "title" => "Structure",
-            "structures" => $data
+            "structures" => $data,
+            'user' => $user
         ]);
     }
 
     public function edit($id)
     {
         $structure = Structure::find($id);
+        $user = Auth::user();
         return view('Admin/structure/edit', [
             "title" => "Edit Structure",
-            "structure" => $structure
+            "structure" => $structure,
+            'user' => $user
         ]);
     }
 
