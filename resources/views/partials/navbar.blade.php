@@ -57,11 +57,11 @@
                         class="{{ Route::currentRouteName() === 'activities.index' ? 'text-lime-500' : 'block py-2 px-3 rounded hover:bg-lime-500 md:hover:bg-transparent md:border-0 md:hover:text-lime-500 md:p-0' }}">Activity</a>
                 </li>
                 <li>
-                    <a href="/registration"
+                    <a href="{{ route('registration') }}"
                         class="{{ Route::currentRouteName() === 'registration' ? 'text-lime-500' : 'block py-2 px-3 rounded hover:bg-lime-500 md:hover:bg-transparent md:border-0 md:hover:text-lime-500 md:p-0' }}">Registration</a>
                 </li>
                 <li>
-                    <a href="/announcement"
+                    <a href="{{ route('announcement') }}"
                         class="{{ Route::currentRouteName() === 'announcement' ? 'text-lime-500' : 'block py-2 px-3 rounded hover:bg-lime-500 md:hover:bg-transparent md:border-0 md:hover:text-lime-500 md:p-0' }}">Announcement</a>
                 </li>
             </ul>
