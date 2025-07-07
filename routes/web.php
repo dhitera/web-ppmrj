@@ -35,6 +35,7 @@ Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'index']
 Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login']);
 Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 
+
 Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     // User List
@@ -50,4 +51,5 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::post('/activity', [ActivityController::class, 'store'])->name('activity.store');
     Route::post('/activity/{id}/update', [ActivityController::class, 'update'])->name('activity.update');
     Route::delete('/activity/delete/{id}', [ActivityController::class, 'delete'])->name('activity.delete');
+    Route::get('/test-pdf', [StructureController::class, 'viewpdf'])->name('test.pdf');
 });

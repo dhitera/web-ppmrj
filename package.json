@@ -15,6 +15,7 @@
     },
     "dependencies": {
         "flowbite": "^2.5.1",
+        "puppeteer": "^24.11.2",
         "trix": "^2.1.5"
     }
 }

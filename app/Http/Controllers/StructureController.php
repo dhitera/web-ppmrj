@@ -80,4 +80,65 @@ class StructureController extends Controller
 
         return redirect()->route('admin.structure')->with('success', 'Structure updated successfully!');
     }
+
+    public function viewpdf()
+    {
+        $data = Structure::all();
+        $user = Auth::user();
+        $mpdf = new \Mpdf\Mpdf();
+
+        // Build HTML string with improved styling
+        $html = '<h1 style="text-align: center; color: #333;">Structure Report</h1>';
+        $html .= '<table border="1" style="width:100%; border-collapse: collapse; margin-top: 20px;">';
+        $html .= '<tr style="background-color: #f2f2f2;">
+                    <th style="padding: 10px; text-align: center;">Photo</th>
+                    <th style="padding: 10px;">Name</th>
+                    <th style="padding: 10px;">Job Desk</th>
+                  </tr>';
+
+        foreach ($data as $structure) {
+            $html .= '<tr>';
+            
+            // Handle profile image
+            $html .= '<td style="padding: 10px; text-align: center; width: 120px;">';
+            if ($structure->profile_url) {
+                // Get the full path to the image
+                $imagePath = storage_path('app/public/' . $structure->profile_url);
+                
+                // Check if image exists
+                if (file_exists($imagePath)) {
+                    // Convert image to base64 for PDF embedding
+                    $imageData = base64_encode(file_get_contents($imagePath));
+                    $imageInfo = getimagesize($imagePath);
+                    $mimeType = $imageInfo['mime'];
+                    
+                    $html .= '<img src="data:' . $mimeType . ';base64,' . $imageData . '" 
+                             style="width: 80px; height: 80px; object-fit: cover; border-radius: 5px;" />';
+                } else {
+                    $html .= '<div style="width: 80px; height: 80px; background-color: #f0f0f0; 
+                             display: flex; align-items: center; justify-content: center; 
+                             border-radius: 5px; font-size: 12px; color: #666;">No Photo</div>';
+                }
+            } else {
+                $html .= '<div style="width: 80px; height: 80px; background-color: #f0f0f0; 
+                         display: flex; align-items: center; justify-content: center; 
+                         border-radius: 5px; font-size: 12px; color: #666;">No Photo</div>';
+            }
+            $html .= '</td>';
+            
+            $html .= '<td style="padding: 10px; vertical-align: middle;">' . htmlspecialchars($structure->name) . '</td>';
+            $html .= '<td style="padding: 10px; vertical-align: middle;">' . htmlspecialchars($structure->jobdesk) . '</td>';
+            $html .= '</tr>';
+        }
+
+        $html .= '</table>';
+        
+        // Add footer with date
+        $html .= '<div style="margin-top: 30px; text-align: right; font-size: 12px; color: #666;">
+                    Generated on: ' . date('Y-m-d H:i:s') . '
+                  </div>';
+
+        $mpdf->WriteHTML($html);
+        $mpdf->Output('structure-report.pdf', 'I'); // 'I' for inline display
+    }
 }
