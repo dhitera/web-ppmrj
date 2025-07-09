@@ -25,14 +25,12 @@ class DatabaseSeeder extends Seeder
         User::create([
             'name' => 'Admin PPM',
             'email' => 'admin@gmail.com',
-            'role' => 'admin',
             'password' => 'admin'
         ]);
 
         User::create([
             'name' => 'Kreatif PPM',
             'email' => 'kreatif@gmail.com',
-            'role' => 'kreatif',
             'password' => 'kreatif'
         ]);
 
@@ -87,6 +85,11 @@ class DatabaseSeeder extends Seeder
         Structure::create([
             'name' => fake()->name,
             'jobdesk' => 'Wakil 4'
+        ]);
+
+        // Run roles and permissions seeder AFTER creating users
+        $this->call([
+            RolePermissionSeeder::class,
         ]);
     }
 }

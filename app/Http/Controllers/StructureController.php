@@ -98,20 +98,20 @@ class StructureController extends Controller
 
         foreach ($data as $structure) {
             $html .= '<tr>';
-            
+
             // Handle profile image
             $html .= '<td style="padding: 10px; text-align: center; width: 120px;">';
             if ($structure->profile_url) {
                 // Get the full path to the image
                 $imagePath = storage_path('app/public/' . $structure->profile_url);
-                
+
                 // Check if image exists
                 if (file_exists($imagePath)) {
                     // Convert image to base64 for PDF embedding
                     $imageData = base64_encode(file_get_contents($imagePath));
                     $imageInfo = getimagesize($imagePath);
                     $mimeType = $imageInfo['mime'];
-                    
+
                     $html .= '<img src="data:' . $mimeType . ';base64,' . $imageData . '" 
                              style="width: 80px; height: 80px; object-fit: cover; border-radius: 5px;" />';
                 } else {
@@ -125,14 +125,14 @@ class StructureController extends Controller
                          border-radius: 5px; font-size: 12px; color: #666;">No Photo</div>';
             }
             $html .= '</td>';
-            
+
             $html .= '<td style="padding: 10px; vertical-align: middle;">' . htmlspecialchars($structure->name) . '</td>';
             $html .= '<td style="padding: 10px; vertical-align: middle;">' . htmlspecialchars($structure->jobdesk) . '</td>';
             $html .= '</tr>';
         }
 
         $html .= '</table>';
-        
+
         // Add footer with date
         $html .= '<div style="margin-top: 30px; text-align: right; font-size: 12px; color: #666;">
                     Generated on: ' . date('Y-m-d H:i:s') . '

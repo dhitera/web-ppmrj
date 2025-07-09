@@ -11,7 +11,7 @@ class AdminController extends Controller
 {
     public function dashboard()
     {
-        $user = Auth::user();
+        $user = User::with('roles')->find(Auth::id());
         return view('Admin/dashboard', [
             "title" => "Dashboard",
             "user" => $user
@@ -21,7 +21,7 @@ class AdminController extends Controller
     public function userList()
     {
         $user = Auth::user();
-        $data = User::all();
+        $data = User::with('roles')->get();
         return view('Admin/userList/index', [
             "title" => "Admin",
             "user" => $user,
