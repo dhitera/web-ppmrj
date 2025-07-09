@@ -16,6 +16,12 @@ Route::get('/', function () {
     ]);
 })->name('home');
 
+Route::get('/about', function () {
+    return view('about', [
+        "title" => "About"
+    ]);
+})->name('about');
+
 Route::get('/structure', [StructureController::class, 'show'])->name('structure');
 
 Route::get('/activities', [ActivityController::class, 'index'])->name('activities.index');

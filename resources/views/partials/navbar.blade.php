@@ -1,25 +1,3 @@
-{{-- <nav class="navigation">
-    <div class="brand">
-        <div class="logo">
-            <img src="img/logoppm.png" alt="PPMRJ Bandung">
-        </div>
-        <div class="brand-name">
-            <h3>PPMRJ Bandung</h3>
-        </div>
-    </div>
-    <div class="menu">
-        <ul>
-            <li><a href="/">home</a></li>
-            <li><a href="/about">about</a></li>
-            <li><a href="/structure">Structure</a></li>
-            <li><a href="/activity">Activity</a></li>
-            <li><a href="/registration"">registration</a>
-            </li>
-            <li><a href=" /announcement">Announcement</a></li>
-        </ul>
-    </div>
-</nav> --}}
-
 <nav class="bg-[#333] border-gray-800 text-white sticky w-full z-20 top-0 start-0 border-b">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
@@ -45,8 +23,8 @@
                         class="{{ Route::currentRouteName() === 'home' ? 'text-lime-500' : 'block py-2 px-3 rounded hover:bg-lime-500 md:hover:bg-transparent md:border-0 md:hover:text-lime-500 md:p-0' }}">Home</a>
                 </li>
                 <li>
-                    <a href="#about"
-                        class="block py-2 px-3 rounded hover:bg-lime-500 md:hover:bg-transparent md:border-0 md:hover:text-lime-500 md:p-0">About</a>
+                    <a href="/about"
+                        class="{{ Route::currentRouteName() === 'about' ? 'text-lime-500' : 'block py-2 px-3 rounded hover:bg-lime-500 md:hover:bg-transparent md:border-0 md:hover:text-lime-500 md:p-0' }}">About</a>
                 </li>
                 <li>
                     <a href="/structure"
