@@ -28,9 +28,8 @@
             @foreach ($activity as $data)
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    <img src=@isset($data->image_url) {{ asset('storage/' . $data->image_url) }} @else {{
-                    asset('/img/blankphoto.jpeg') }} @endisset
-                    class="w-28" alt="{{ $data->title }}">
+                    <img src="{{ $data->getFirstMediaUrl('images') ?: asset('/img/blankphoto.jpeg') }}" class="w-28"
+                        alt="{{ $data->title }}">
                 </th>
                 <td class="px-6 py-4">
                     {{ $data->title }}

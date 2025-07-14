@@ -23,7 +23,7 @@
                 value="{{ $structure->jobdesk }}" readonly>
         </div>
         <div class="mb-3">
-            <img src="{{ $structure->profile_url ? asset('storage/' . $structure->profile_url) : asset('/img/blankprofile.jfif') }}"
+            <img src="{{ $structure->getFirstMediaUrl('images') ?: asset('/img/blankprofile.jfif') }}"
                 class="w-28 border-white border-4 rounded" alt="{{ $structure->name }}">
             <p class="text-sm text-gray-800 italic">foto sebelumnya</p>
         </div>
@@ -41,7 +41,8 @@
                 @endforeach
             </ul>
             @else
-            <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">JPG or JPEG(MAX. 1mb).
+            <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">JPEG, JPG, PNG, WebP (MAX.
+                5MB).
                 @endif
             </p>
         </div>

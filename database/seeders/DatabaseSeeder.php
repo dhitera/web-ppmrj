@@ -2,11 +2,15 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use App\Models\Activity;
 use App\Models\Structure;
-use App\Models\User;
+use App\Models\SelectedStudent;
+use App\Models\Announcement;
+use App\Models\AdditionalInformation;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 
 class DatabaseSeeder extends Seeder
 {
@@ -35,12 +39,10 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Activity::create([
-            'image_url' => 'img/bakar1.jpg',
             'title' => 'Babakaran gaes',
             'description' => 'lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, eum molestiae magni numquam sunt commodi provident magnam reiciendis qui repellendus ratione excepturi vel illo sequi quisquam vitae dignissimos deleniti aperiam?',
         ]);
         Activity::create([
-            'image_url' => 'img/bakar2.jpg',
             'title' => 'Barabakan',
             'description' => 'lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, eum molestiae magni numquam sunt commodi provident magnam reiciendis qui repellendus ratione excepturi vel illo sequi quisquam vitae dignissimos deleniti aperiam?',
         ]);
@@ -86,6 +88,46 @@ class DatabaseSeeder extends Seeder
             'name' => fake()->name,
             'jobdesk' => 'Wakil 4'
         ]);
+
+        Announcement::create([
+            'title' => 'Seleksi Gelombang 1 sudah diumumkan!!',
+            'publish_date' => '2025-07-01',
+        ]);
+
+        Announcement::create([
+            'title' => 'Seleksi Gelombang 2 sudah diumumkan!!',
+            'publish_date' => '2025-07-01',
+        ]);
+
+        for ($i = 0; $i < 5; $i++) {
+            SelectedStudent::create([
+                'announcement_id' => 1,
+                'student_name' => fake()->name,
+                'student_city' => fake()->city,
+                'gelombang' => "gelombang1",
+            ]);
+        }
+
+        for ($i = 0; $i < 5; $i++) {
+            SelectedStudent::create([
+                'announcement_id' => 2,
+                'student_name' => fake()->name,
+                'student_city' => fake()->city,
+                'gelombang' => "gelombang2",
+            ]);
+        }
+
+        AdditionalInformation::create([
+            'announcement_id' => 1,
+            'info' => 'Bagi Pendaftar yang dinyatakan lulus tahap seleksi wajib untuk mengikuti kegiatan Orientasi Santri (Informasi akan diberikan lebih lanjut).'
+        ]);
+
+        AdditionalInformation::create([
+            'announcement_id' => 2,
+            'info' => 'Wawancara akan dilaksanakan pada tanggal 25 Juli 2025'
+        ]);
+
+        Storage::disk('public')->deleteDirectory('');
 
         // Run roles and permissions seeder AFTER creating users
         $this->call([

@@ -133,8 +133,8 @@
                             class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group {{ Route::currentRouteName() === '/' ? ' bg-gray-200' : 'hover:bg-gray-100'}}">Registrasi</a>
                     </li>
                     <li>
-                        <a href="#"
-                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group {{ Route::currentRouteName() === '/' ? ' bg-gray-200' : 'hover:bg-gray-100'}}">Pengumuman</a>
+                        <a href="{{ route('admin.announcement') }}"
+                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group {{ Route::currentRouteName() === 'admin.announcement' ? ' bg-gray-200' : 'hover:bg-gray-100'}}">Pengumuman</a>
                     </li>
 
                 </ul>

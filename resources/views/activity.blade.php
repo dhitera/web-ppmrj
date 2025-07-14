@@ -8,7 +8,7 @@
             data-modal-toggle="modal-{{ $data->id }}">
             <a href="#">
                 <img class="rounded-lg w-full h-64 object-cover object-center"
-                    src="@isset($data->image_url){{ asset('storage/' . $data->image_url) }}@else{{ asset('/img/blankphoto.jpeg') }}@endisset"
+                    src="{{ $data->getFirstMediaUrl('images') ?: asset('/img/blankphoto.jpeg') }}"
                     alt="{{ $data->title }}">
             </a>
             <figcaption
@@ -40,7 +40,7 @@
                 </div>
                 <div class="p-4 md:p-5 space-y-4">
                     <img class="w-full h-64 object-cover object-center rounded-lg"
-                        src="@isset($data->image_url){{ asset('storage/' . $data->image_url) }}@else{{ asset('/img/blankphoto.jpeg') }}@endisset"
+                        src="{{ $data->getFirstMediaUrl('images') ?: asset('/img/blankphoto.jpeg') }}"
                         alt="{{ $data->title }}">
                     <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400 trix-content">
                         {!! $data->description !!}

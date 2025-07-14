@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Activity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 
 class ActivityController extends Controller
 {
@@ -44,26 +43,23 @@ class ActivityController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'file_input' => 'nullable|file|image|mimes:jpeg,jpg|max:2048', // max 2MB
+            'file_input' => 'nullable|file|image|mimes:jpeg,jpg,png,webp|max:5120', // max 5MB
         ], [
-            'file_input.max' => 'The photo must not be larger than 2MB.',
-            'file_input.mimes' => 'The photo must be a file of type: jpeg, jpg.',
+            'file_input.max' => 'The image must not be larger than 5MB.',
+            'file_input.mimes' => 'The image must be a file of type: JPEG, JPG, PNG, or WebP.',
         ]);
-
-
-        // Handle the photo upload
-        if ($request->hasFile('file_input')) {
-            $photo = $request->file('file_input');
-            $filename = time() . '.' . $photo->getClientOriginalExtension();
-            $path = $photo->storeAs('img/activity', $filename, 'public');
-        }
 
         // Create new Activity
         $activity = new Activity();
         $activity->title = $validatedData['title'];
         $activity->description = $validatedData['description'];
-        $activity->image_url = $path ?? null;
         $activity->save();
+
+        // Handle the photo upload using Spatie Media Library
+        if ($request->hasFile('file_input')) {
+            $activity->addMediaFromRequest('file_input')
+                ->toMediaCollection('images');
+        }
 
         return redirect()->route('admin.activity')->with('success', 'Activity added successfully!');
     }
@@ -87,33 +83,24 @@ class ActivityController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'file_input' => 'nullable|file|image|mimes:jpeg,jpg|max:2048', // max 2MB
+            'file_input' => 'nullable|file|image|mimes:jpeg,jpg,png,webp|max:5120', // max 5MB
         ], [
-            'file_input.max' => 'The photo must not be larger than 2MB.',
-            'file_input.mimes' => 'The photo must be a file of type: jpeg, jpg.',
+            'file_input.max' => 'The image must not be larger than 5MB.',
+            'file_input.mimes' => 'The image must be a file of type: JPEG, JPG, PNG, or WebP.',
         ]);
 
-        // Update the structure data
+        // Update the activity data
         $activity->title = $request->input('title');
         $activity->description = $request->input('description');
-
-        // Handle the photo upload
-        if ($request->hasFile('file_input')) {
-            // Delete the existing photo
-            if ($activity->image_url) {
-                Storage::delete('public/' . $activity->image_url);
-            }
-
-            // Upload the new photo
-            $photo = $request->file('file_input');
-            $filename = time() . '.' . $photo->getClientOriginalExtension();
-            $path = $photo->storeAs('img/activity', $filename, 'public');
-
-            // Update the photo path in the database
-            $activity->image_url = $path;
-        }
-
         $activity->save();
+
+        // Handle the photo upload using Spatie Media Library
+        if ($request->hasFile('file_input')) {
+            // Clear existing images and add new one
+            $activity->clearMediaCollection('images');
+            $activity->addMediaFromRequest('file_input')
+                ->toMediaCollection('images');
+        }
 
         return redirect()->route('admin.activity')->with('success', 'Activity updated successfully!');
     }
@@ -122,12 +109,7 @@ class ActivityController extends Controller
     {
         $activity = Activity::findOrFail($id);
 
-        // Delete the associated image if it exists
-        if ($activity->image_url) {
-            Storage::delete('public/' . $activity->image_url);
-        }
-
-        // Delete the activity
+        // Delete the activity (Media Library will automatically clean up associated media)
         $activity->delete();
 
         return redirect()->route('admin.activity')->with('success', 'Activity deleted successfully!');

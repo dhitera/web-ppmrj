@@ -24,7 +24,7 @@
         </div>
         <div class="mb-3">
             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Foto Aktivitas</label>
-            <img src="{{ $activity->image_url ? asset('storage/' . $activity->image_url) : asset('/img/blankprofile.jfif') }}"
+            <img src="{{ $activity->getFirstMediaUrl('images') ?: asset('/img/blankprofile.jfif') }}"
                 class="w-28 border-white border-4 rounded" alt="{{ $activity->title }}">
             <p class="text-sm text-gray-800 italic">foto sebelumnya</p>
         </div>
@@ -42,7 +42,8 @@
                 @endforeach
             </ul>
             @else
-            <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">JPG or JPEG(MAX. 1mb).
+            <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">JPEG, JPG, PNG, WebP (MAX.
+                5MB).
                 @endif
             </p>
         </div>

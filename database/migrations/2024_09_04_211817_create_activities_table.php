@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('activities', function (Blueprint $table) {
             $table->id();
-            $table->string('image_url');
             $table->string('title');
             $table->text('description');
             $table->text('author')->nullable();

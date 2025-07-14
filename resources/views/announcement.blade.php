@@ -26,51 +26,17 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($santri->where('gelombang', 'gelombang1') as $data)
                     <tr class="border-b border-gray-300 dark:border-gray-700">
                         <th scope="row"
                             class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-100 dark:text-white dark:bg-gray-800">
-                            Muhammad Rifqi Ashari
+                            {{ $data->student_name }}
                         </th>
                         <td class="px-6 py-4">
-                            Tangerang
+                            {{ $data->student_city }}
                         </td>
                     </tr>
-                    <tr class="border-b border-gray-300 dark:border-gray-700">
-                        <th scope="row"
-                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-100 dark:text-white dark:bg-gray-800">
-                            Aris Muhammad Rozaq
-                        </th>
-                        <td class="px-6 py-4">
-                            Sumedang
-                        </td>
-                    </tr>
-                    <tr class="border-b border-gray-300 dark:border-gray-700">
-                        <th scope="row"
-                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-100 dark:text-white dark:bg-gray-800">
-                            Muhammad Ilman Nafian Alvalery
-                        </th>
-                        <td class="px-6 py-4">
-                            Cianjur
-                        </td>
-                    </tr>
-                    <tr class="border-b border-gray-300 dark:border-gray-700">
-                        <th scope="row"
-                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-100 dark:text-white dark:bg-gray-800">
-                            Aswangga Pandita Sadu
-                        </th>
-                        <td class="px-6 py-4">
-                            Kediri
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row"
-                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-100 dark:text-white dark:bg-gray-800">
-                            Arga Ulya Abdurrohman
-                        </th>
-                        <td class="px-6 py-4">
-                            Karanganyar
-                        </td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
@@ -90,51 +56,17 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($santri->where('gelombang', 'gelombang2') as $data)
                     <tr class="border-b border-gray-300 dark:border-gray-700">
                         <th scope="row"
                             class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-100 dark:text-white dark:bg-gray-800">
-                            Muhammad Rifqi Ashari
+                            {{ $data->student_name }}
                         </th>
                         <td class="px-6 py-4">
-                            Tangerang
+                            {{ $data->student_city }}
                         </td>
                     </tr>
-                    <tr class="border-b border-gray-300 dark:border-gray-700">
-                        <th scope="row"
-                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-100 dark:text-white dark:bg-gray-800">
-                            Aris Muhammad Rozaq
-                        </th>
-                        <td class="px-6 py-4">
-                            Sumedang
-                        </td>
-                    </tr>
-                    <tr class="border-b border-gray-300 dark:border-gray-700">
-                        <th scope="row"
-                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-100 dark:text-white dark:bg-gray-800">
-                            Muhammad Ilman Nafian Alvalery
-                        </th>
-                        <td class="px-6 py-4">
-                            Cianjur
-                        </td>
-                    </tr>
-                    <tr class="border-b border-gray-300 dark:border-gray-700">
-                        <th scope="row"
-                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-100 dark:text-white dark:bg-gray-800">
-                            Aswangga Pandita Sadu
-                        </th>
-                        <td class="px-6 py-4">
-                            Kediri
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row"
-                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-100 dark:text-white dark:bg-gray-800">
-                            Arga Ulya Abdurrohman
-                        </th>
-                        <td class="px-6 py-4">
-                            Karanganyar
-                        </td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
@@ -153,15 +85,11 @@
                 <h2 class="text-lg font-bold text-gray-900 dark:text-white">Informasi Tambahan:</h2>
             </div>
             <ul class="space-y-1 text-gray-500 list-disc list-outside mx-7 marker:text-green-600">
+                @foreach ($informasi as $data)
                 <li>
-                    Bagi Pendaftar yang dinyatakan lulus tahap seleksi wajib untuk mengikuti kegiatan Orientasi Santri
-                    (Informasi akan diberikan lebih lanjut).
+                    {{ $data->info }}
                 </li>
-                <li>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut nesciunt pariatur inventore in fuga?
-                    Dolorem repellat aut eum accusamus, animi harum, hic non perferendis quia rem obcaecati, eaque
-                    explicabo libero.
-                </li>
+                @endforeach
             </ul>
         </div>
 

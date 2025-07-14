@@ -5,6 +5,7 @@ use App\Models\Structure;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\StructureController;
 
 // ketika akses / maka menjalankan fungsi view
@@ -31,11 +32,8 @@ Route::get('/registration', function () {
         "title" => "Registration"
     ]);
 })->name('registration');
-Route::get('/announcement', function () {
-    return view('announcement', [
-        "title" => "Announcement"
-    ]);
-})->name('announcement');
+
+Route::get('/announcement', [AnnouncementController::class, 'index'])->name('announcement.index');
 
 Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'index'])->name('login');
 Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login']);
@@ -69,4 +67,17 @@ Route::prefix('admin')->middleware(['auth', 'permission:view admin dashboard'])-
         Route::post('/activity/{id}/update', [ActivityController::class, 'update'])->name('activity.update');
         Route::delete('/activity/delete/{id}', [ActivityController::class, 'delete'])->name('activity.delete');
     });
+
+    Route::get('/announcement', [AnnouncementController::class, 'adminShow'])->name('admin.announcement');
+    Route::get('/announcement/add-santri', [AnnouncementController::class, 'createSantri'])->name('announcement.addSantri');
+    Route::get('/announcement/add-info', [AnnouncementController::class, 'createInfo'])->name('announcement.addInfo');
+    Route::post('/announcement/storeSantri', [AnnouncementController::class, 'storeSantri'])->name('announcement.storeSantri');
+    Route::post('/announcement/storeInfo', [AnnouncementController::class, 'storeInfo'])->name('announcement.storeInfo');
+
+    Route::get('/announcement/{id}/editSantri', [AnnouncementController::class, 'editSantri'])->name('announcement.editSantri');
+    Route::get('/announcement/{id}/editInfo', [AnnouncementController::class, 'editInfo'])->name('announcement.editInfo');
+    Route::post('/announcement/{id}/updateSantri', [AnnouncementController::class, 'updateSantri'])->name('announcement.updateSantri');
+    Route::post('/announcement/{id}/updateInfo', [AnnouncementController::class, 'updateInfo'])->name('announcement.updateInfo');
+    Route::delete('/announcement/delete-santri/{id}', [AnnouncementController::class, 'destroySantri'])->name('announcement.deleteSantri');
+    Route::delete('/announcement/delete-info/{id}', [AnnouncementController::class, 'destroyInfo'])->name('announcement.deleteInfo');
 });

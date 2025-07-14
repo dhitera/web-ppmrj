@@ -12,8 +12,7 @@
     @foreach ($structures as $jobdesk => $data)
     @if($jobdesk == 'Pembina PPM')
     @foreach($data as $structure)
-    <x-profile-card
-        image="{{ $structure->profile_url ? asset('storage/' . $structure->profile_url) : asset('/img/blankprofile.jfif') }}"
+    <x-profile-card image="{{ $structure->getFirstMediaUrl('images') ?: asset('/img/blankprofile.jfif') }}"
         name="{{ $structure->name }}" jabatan="{{ $structure->jobdesk }}"></x-profile-card>
     @endforeach
     @endif
@@ -23,8 +22,7 @@
         @foreach ($structures as $jobdesk => $data)
         @if($jobdesk == 'Pinisepuh' || $jobdesk == 'Ketua PPM')
         @foreach($data as $structure)
-        <x-profile-card
-            image="{{ $structure->profile_url ? asset('storage/' . $structure->profile_url) : asset('/img/blankprofile.jfif') }}"
+        <x-profile-card image="{{ $structure->getFirstMediaUrl('images') ?: asset('/img/blankprofile.jfif') }}"
             name="{{ $structure->name }}" jabatan="{{ $structure->jobdesk }}"></x-profile-card>
         @endforeach
         @endif
@@ -41,8 +39,7 @@
         @foreach ($structures as $jobdesk => $data)
         @if($jobdesk == 'Dewan Guru')
         @foreach($data as $structure)
-        <x-profile-card
-            image="{{ $structure->profile_url ? asset('storage/' . $structure->profile_url) : asset('/img/blankprofile.jfif') }}"
+        <x-profile-card image="{{ $structure->getFirstMediaUrl('images') ?: asset('/img/blankprofile.jfif') }}"
             name="{{ $structure->name }}" jabatan="{{ $structure->jobdesk }}"></x-profile-card>
         @endforeach
         @endif
@@ -58,8 +55,7 @@
     @foreach ($structures as $jobdesk => $data)
     @if($jobdesk == 'Ketua Mahasiswa')
     @foreach($data as $structure)
-    <x-profile-card
-        image="{{ $structure->profile_url ? asset('storage/' . $structure->profile_url) : asset('/img/blankprofile.jfif') }}"
+    <x-profile-card image="{{ $structure->getFirstMediaUrl('images') ?: asset('/img/blankprofile.jfif') }}"
         name="{{ $structure->name }}" jabatan="{{ $structure->jobdesk }}"></x-profile-card>
     @endforeach
     @endif
@@ -69,8 +65,7 @@
         @foreach ($structures as $jobdesk => $data)
         @if(in_array($jobdesk, ['Wakil 1', 'Wakil 2', 'Wakil 3', 'Wakil 4']))
         @foreach($data as $structure)
-        <x-profile-card
-            image="{{ $structure->profile_url ? asset('storage/' . $structure->profile_url) : asset('/img/blankprofile.jfif') }}"
+        <x-profile-card image="{{ $structure->getFirstMediaUrl('images') ?: asset('/img/blankprofile.jfif') }}"
             name="{{ $structure->name }}" jabatan="{{ $structure->jobdesk }}"></x-profile-card>
         @endforeach
         @endif
