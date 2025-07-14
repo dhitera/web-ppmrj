@@ -68,16 +68,18 @@ Route::prefix('admin')->middleware(['auth', 'permission:view admin dashboard'])-
         Route::delete('/activity/delete/{id}', [ActivityController::class, 'delete'])->name('activity.delete');
     });
 
-    Route::get('/announcement', [AnnouncementController::class, 'adminShow'])->name('admin.announcement');
-    Route::get('/announcement/add-santri', [AnnouncementController::class, 'createSantri'])->name('announcement.addSantri');
-    Route::get('/announcement/add-info', [AnnouncementController::class, 'createInfo'])->name('announcement.addInfo');
-    Route::post('/announcement/storeSantri', [AnnouncementController::class, 'storeSantri'])->name('announcement.storeSantri');
-    Route::post('/announcement/storeInfo', [AnnouncementController::class, 'storeInfo'])->name('announcement.storeInfo');
+    Route::middleware('permission:manage announcements')->group(function () {
+        Route::get('/announcement', [AnnouncementController::class, 'adminShow'])->name('admin.announcement');
+        Route::get('/announcement/add-santri', [AnnouncementController::class, 'createSantri'])->name('announcement.addSantri');
+        Route::get('/announcement/add-info', [AnnouncementController::class, 'createInfo'])->name('announcement.addInfo');
+        Route::post('/announcement/storeSantri', [AnnouncementController::class, 'storeSantri'])->name('announcement.storeSantri');
+        Route::post('/announcement/storeInfo', [AnnouncementController::class, 'storeInfo'])->name('announcement.storeInfo');
 
-    Route::get('/announcement/{id}/editSantri', [AnnouncementController::class, 'editSantri'])->name('announcement.editSantri');
-    Route::get('/announcement/{id}/editInfo', [AnnouncementController::class, 'editInfo'])->name('announcement.editInfo');
-    Route::post('/announcement/{id}/updateSantri', [AnnouncementController::class, 'updateSantri'])->name('announcement.updateSantri');
-    Route::post('/announcement/{id}/updateInfo', [AnnouncementController::class, 'updateInfo'])->name('announcement.updateInfo');
-    Route::delete('/announcement/delete-santri/{id}', [AnnouncementController::class, 'destroySantri'])->name('announcement.deleteSantri');
-    Route::delete('/announcement/delete-info/{id}', [AnnouncementController::class, 'destroyInfo'])->name('announcement.deleteInfo');
+        Route::get('/announcement/{id}/editSantri', [AnnouncementController::class, 'editSantri'])->name('announcement.editSantri');
+        Route::get('/announcement/{id}/editInfo', [AnnouncementController::class, 'editInfo'])->name('announcement.editInfo');
+        Route::post('/announcement/{id}/updateSantri', [AnnouncementController::class, 'updateSantri'])->name('announcement.updateSantri');
+        Route::post('/announcement/{id}/updateInfo', [AnnouncementController::class, 'updateInfo'])->name('announcement.updateInfo');
+        Route::delete('/announcement/delete-santri/{id}', [AnnouncementController::class, 'destroySantri'])->name('announcement.deleteSantri');
+        Route::delete('/announcement/delete-info/{id}', [AnnouncementController::class, 'destroyInfo'])->name('announcement.deleteInfo');
+    });
 });

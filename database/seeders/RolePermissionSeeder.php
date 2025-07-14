@@ -24,8 +24,7 @@ class RolePermissionSeeder extends Seeder
             'manage activities',
             'manage structure',
             'manage users',
-            'view activities',
-            'view structure',
+            'manage announcements',
         ];
 
         foreach ($permissions as $permission) {
@@ -39,17 +38,21 @@ class RolePermissionSeeder extends Seeder
             'manage activities',
             'manage structure',
             'manage users',
-            'view activities',
-            'view structure',
+            'manage announcements',
         ]);
 
         $kreatifRole = Role::firstOrCreate(['name' => 'kreatif']);
         $kreatifRole->givePermissionTo([
             'view admin dashboard',
             'manage activities',
-            'view activities',
-            'view structure',
-        ]);        // Migrate existing users based on email (no role column dependency)
+        ]);
+
+        $panitiaOm = Role::firstOrCreate(['name' => 'panitia']);
+        $panitiaOm->givePermissionTo([
+            'view admin dashboard',
+            'manage announcements',
+        ]);
+        // Migrate existing users based on email (no role column dependency)
         $users = User::all();
         foreach ($users as $user) {
             // Remove existing roles first
@@ -58,6 +61,8 @@ class RolePermissionSeeder extends Seeder
             // Assign roles based on email since role column no longer exists
             if ($user->email === 'admin@gmail.com') {
                 $user->assignRole('admin');
+            } elseif ($user->email === 'panitia@gmail.com') {
+                $user->assignRole('panitia');
             } else {
                 // Default role for all other users
                 $user->assignRole('kreatif');
@@ -67,5 +72,6 @@ class RolePermissionSeeder extends Seeder
         $this->command->info('Roles and permissions created successfully!');
         $this->command->info('Admin users: ' . User::role('admin')->count());
         $this->command->info('Kreatif users: ' . User::role('kreatif')->count());
+        $this->command->info('Panitia: ' . User::role('panitia')->count());
     }
 }

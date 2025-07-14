@@ -93,7 +93,7 @@
             @endcan
 
             {{-- Pages dropdown - Only show if user has permissions for at least one page --}}
-            @canany(['manage structure', 'manage activities'])
+            @canany(['manage structure', 'manage activities', 'manage announcements'])
             <li>
                 <button type="button"
                     class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
@@ -132,10 +132,12 @@
                         <a href="#"
                             class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group {{ Route::currentRouteName() === '/' ? ' bg-gray-200' : 'hover:bg-gray-100'}}">Registrasi</a>
                     </li>
+                    @can('manage announcements')
                     <li>
                         <a href="{{ route('admin.announcement') }}"
                             class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group {{ Route::currentRouteName() === 'admin.announcement' ? ' bg-gray-200' : 'hover:bg-gray-100'}}">Pengumuman</a>
                     </li>
+                    @endcan
 
                 </ul>
             </li>

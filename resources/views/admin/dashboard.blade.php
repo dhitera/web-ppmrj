@@ -44,6 +44,13 @@
                     Kelola User
                 </a>
                 @endcan
+
+                @can('manage announcements')
+                <a href="{{ route('admin.announcement') }}"
+                    class="block w-full text-center bg-purple-500 text-white py-2 px-4 rounded hover:bg-purple-600 transition">
+                    Kelola Pengumuman
+                </a>
+                @endcan
             </div>
         </div>
 

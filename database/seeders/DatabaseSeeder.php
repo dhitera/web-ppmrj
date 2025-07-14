@@ -38,6 +38,12 @@ class DatabaseSeeder extends Seeder
             'password' => 'kreatif'
         ]);
 
+        User::create([
+            'name' => 'Panitia OM',
+            'email' => 'panitia@gmail.com',
+            'password' => 'panitia'
+        ]);
+
         Activity::create([
             'title' => 'Babakaran gaes',
             'description' => 'lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, eum molestiae magni numquam sunt commodi provident magnam reiciendis qui repellendus ratione excepturi vel illo sequi quisquam vitae dignissimos deleniti aperiam?',
