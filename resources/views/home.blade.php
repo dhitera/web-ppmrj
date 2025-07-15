@@ -1,7 +1,9 @@
 @extends('layouts.main')
 
 @section('container')
+@inject('settingsService', 'App\Services\SettingsService')
 
+@if($settingsService->getBool('show_registration_notification', true))
 <div id="sticky-banner" tabindex="-1"
     class="fixed top-24 start-0 z-50 flex justify-between w-full p-3 border-b border-gray-200 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 opacity-80">
     <div class="flex items-center mx-auto">
@@ -29,6 +31,7 @@
         </button>
     </div>
 </div>
+@endif
 
 {{-- Hero Section --}}
 <div class="bg-auto bg-center bg-no-repeat bg-gray-500 bg-blend-multiply md:h-[150vh] md:bg-cover"

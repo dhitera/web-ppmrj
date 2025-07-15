@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\AnnouncementController;
+use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\StructureController;
 
 // ketika akses / maka menjalankan fungsi view
@@ -28,12 +30,32 @@ Route::get('/structure', [StructureController::class, 'show'])->name('structure'
 Route::get('/activities', [ActivityController::class, 'index'])->name('activities.index');
 
 Route::get('/registration', function () {
-    return view('registration', [
-        "title" => "Registration"
-    ]);
+    // Check if registration page is enabled
+    $settingsService = app(App\Services\SettingsService::class);
+    if (!$settingsService->getBool('enable_registration_page', true)) {
+        return redirect()->route('registration.closed');
+    }
+
+    // Properly resolve and call the controller
+    $controller = app(RegistrationController::class);
+    return $controller->index();
 })->name('registration');
 
-Route::get('/announcement', [AnnouncementController::class, 'index'])->name('announcement.index');
+Route::get('/registration-closed', [RegistrationController::class, 'closed'])->name('registration.closed');
+
+Route::get('/announcement', function () {
+    // Check if announcement page is enabled
+    $settingsService = app(App\Services\SettingsService::class);
+    if (!$settingsService->getBool('enable_announcement_page', true)) {
+        return redirect()->route('announcement.closed');
+    }
+
+    // Properly resolve and call the controller
+    $controller = app(AnnouncementController::class);
+    return $controller->index();
+})->name('announcement.index');
+
+Route::get('/closed', [AnnouncementController::class, 'closed'])->name('announcement.closed');
 
 Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'index'])->name('login');
 Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login']);
@@ -81,5 +103,12 @@ Route::prefix('admin')->middleware(['auth', 'permission:view admin dashboard'])-
         Route::post('/announcement/{id}/updateInfo', [AnnouncementController::class, 'updateInfo'])->name('announcement.updateInfo');
         Route::delete('/announcement/delete-santri/{id}', [AnnouncementController::class, 'destroySantri'])->name('announcement.deleteSantri');
         Route::delete('/announcement/delete-info/{id}', [AnnouncementController::class, 'destroyInfo'])->name('announcement.deleteInfo');
+
+        // Settings routes
+        Route::post('/settings/toggle', [SettingsController::class, 'toggle'])->name('admin.settings.toggle');
     });
+
+    Route::get('/registration', [RegistrationController::class, 'adminShow'])->name('admin.registration');
+    Route::get('/registration/edit', [RegistrationController::class, 'edit'])->name('registration.edit');
+    Route::post('/registration/update', [RegistrationController::class, 'update'])->name('registration.update');
 });

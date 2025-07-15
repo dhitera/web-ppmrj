@@ -8,6 +8,7 @@ use App\Models\Structure;
 use App\Models\SelectedStudent;
 use App\Models\Announcement;
 use App\Models\AdditionalInformation;
+use App\Models\Registration;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Storage;
@@ -133,11 +134,18 @@ class DatabaseSeeder extends Seeder
             'info' => 'Wawancara akan dilaksanakan pada tanggal 25 Juli 2025'
         ]);
 
+        Registration::create([
+            'title' => 'Pendaftaran Santri Baru Gelombang 1',
+            'description' => 'Pendaftaran Santri Baru Gelombang 1 - Tahun Akademik 2025/2026. Daftar sekarang untuk mendapatkan kesempatan belajar di PPM RJ dengan fasilitas lengkap dan pembimbingan terbaik.',
+            'registration_link' => 'https://forms.google.com/gelombang1-2025'
+        ]);
+
         Storage::disk('public')->deleteDirectory('');
 
         // Run roles and permissions seeder AFTER creating users
         $this->call([
             RolePermissionSeeder::class,
+            SettingsSeeder::class,
         ]);
     }
 }

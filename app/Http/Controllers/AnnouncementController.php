@@ -24,6 +24,14 @@ class AnnouncementController extends Controller
         ]);
     }
 
+    public function closed()
+    {
+        return view('closed', [
+            "title" => "Announcement Closed",
+            "message" => "Pengumuman Ditutup. Cek saat pengumuman dibuka kembali."
+        ]);
+    }
+
     public function adminShow()
     {
         $dataSantri = SelectedStudent::all();

@@ -20,6 +20,8 @@
     <div class="p-4 sm:ml-64 mt-14">
         @yield('container')
     </div>
+
+    @yield('scripts')
 </body>
 
 </html>

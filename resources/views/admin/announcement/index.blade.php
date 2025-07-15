@@ -140,16 +140,6 @@
             </tbody>
         </table>
     </div>
-    <p class="text-xl font-bold my-5">Total Calon Santri Gelombang 1: <span
-            class="bg-green-100 text-green-800 me-2 px-2.5 py-0.5 rounded-sm dark:bg-green-900 dark:text-green-300">{{
-            $santri->where('gelombang',
-            'gelombang1')->count()
-            }}</span></p>
-    <p class="text-xl font-bold my-5">Total Calon Santri Gelombang 2: <span
-            class="bg-green-100 text-green-800 me-2 px-2.5 py-0.5 rounded-sm dark:bg-green-900 dark:text-green-300">{{
-            $santri->where('gelombang',
-            'gelombang2')->count()
-            }}</span></p>
 </div>
 
 <!-- Tab Content: Informasi Tambahan -->
