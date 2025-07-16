@@ -35,7 +35,7 @@
 
 {{-- Hero Section --}}
 <div class="bg-auto bg-center bg-no-repeat bg-gray-500 bg-blend-multiply md:h-[150vh] md:bg-cover"
-    style="background-image: url('img/foto-ppm.jpg')">
+    style="background-image: url('{{ $home->getFirstMediaUrl('images') ?: asset('/img/blankphoto.jpeg') }}');">
     <div class="px-4 mx-5 md:mx-20 md:text-left py-40 w-1/2">
         <h1 class="mb-4 text-3xl font-extrabold text-white md:text-4xl lg:text-5xl">
             {{ $home->header }}</h1>

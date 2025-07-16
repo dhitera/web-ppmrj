@@ -76,9 +76,9 @@ class HomeController extends Controller
             'guruCount' => 'required|integer|min:0',
             'studentCount' => 'required|integer|min:0',
             'alumniCount' => 'required|integer|min:0',
-            'file_input' => 'nullable|file|image|mimes:jpeg,jpg,png,webp|max:5120', // max 5MB
+            'file_input' => 'nullable|file|image|mimes:jpeg,jpg,png,webp|max:10240', // max 10MB
         ], [
-            'file_input.max' => 'The image must not be larger than 5MB.',
+            'file_input.max' => 'The image must not be larger than 10MB.',
             'file_input.mimes' => 'The image must be a file of type: JPEG, JPG, PNG, or WebP.',
         ]);
 
