@@ -8,6 +8,7 @@ use App\Models\Structure;
 use App\Models\SelectedStudent;
 use App\Models\Announcement;
 use App\Models\AdditionalInformation;
+use App\Models\Home;
 use App\Models\Registration;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -138,6 +139,15 @@ class DatabaseSeeder extends Seeder
             'title' => 'Pendaftaran Santri Baru Gelombang 1',
             'description' => 'Pendaftaran Santri Baru Gelombang 1 - Tahun Akademik 2025/2026. Daftar sekarang untuk mendapatkan kesempatan belajar di PPM RJ dengan fasilitas lengkap dan pembimbingan terbaik.',
             'registration_link' => 'https://forms.google.com/gelombang1-2025'
+        ]);
+
+        Home::create([
+            'header' => 'PPMRJ',
+            'subheader' => 'Bandung Selatan',
+            'description' => 'Pondok Pesantren Mahasiswa Roudhotul Jannah (PPMRJ) Bandung Selatan menyediakan lingkungan yang kondusif untuk belajar dan berkembang, menggabungkan pendidikan agama dengan studi akademis.',
+            'guruCount' => 4,
+            'studentCount' => 80,
+            'alumniCount' => 200
         ]);
 
         Storage::disk('public')->deleteDirectory('');

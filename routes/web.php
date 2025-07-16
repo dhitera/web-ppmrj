@@ -1,23 +1,16 @@
 <?php
 
-use App\Models\Activity;
-use App\Models\Structure;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\AnnouncementController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\StructureController;
 
 // ketika akses / maka menjalankan fungsi view
-Route::get('/', function () {
-    $data = Activity::latest()->paginate(4);
-    return view('home', [
-        "title" => "Home",
-        "activity" => $data
-    ]);
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/about', function () {
     return view('about', [
@@ -67,12 +60,17 @@ Route::prefix('admin')->middleware(['auth', 'permission:view admin dashboard'])-
     // Dashboard - accessible to all admin users (admin & kreatif)
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 
-    // User Management - admin only
+    // User Management
     Route::middleware('permission:manage users')->group(function () {
         Route::get('/user-list', [AdminController::class, 'userList'])->name('admin.userList');
     });
 
-    // Structure Management - admin only
+    // Home Management
+    Route::get('/home', [HomeController::class, 'adminShow'])->name('admin.home');
+    Route::get('/home/edit', [HomeController::class, 'edit'])->name('home.edit');
+    Route::post('/home/update', [HomeController::class, 'update'])->name('home.update');
+
+    // Structure Management
     Route::middleware('permission:manage structure')->group(function () {
         Route::get('/structure', [StructureController::class, 'adminShow'])->name('admin.structure');
         Route::get('/structure/{id}/edit', [StructureController::class, 'edit'])->name('structure.edit');

@@ -114,6 +114,16 @@
                     </svg>
                 </button>
                 <ul id="pages-list" class="hidden py-2 space-y-2">
+                    <li>
+                        <a href="{{ route('admin.home') }}"
+                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group {{ Route::currentRouteName() === 'admin.home' ? ' bg-gray-200' : 'hover:bg-gray-100'}}">Home</a>
+                    </li>
+
+                    <li>
+                        <a href="#"
+                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group {{ Route::currentRouteName() === '/' ? ' bg-gray-200' : 'hover:bg-gray-100'}}">About</a>
+                    </li>
+
                     @can('manage structure')
                     <li>
                         <a href="{{ route('admin.structure') }}"

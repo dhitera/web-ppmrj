@@ -38,13 +38,10 @@
     style="background-image: url('img/foto-ppm.jpg')">
     <div class="px-4 mx-5 md:mx-20 md:text-left py-40 w-1/2">
         <h1 class="mb-4 text-3xl font-extrabold text-white md:text-4xl lg:text-5xl">
-            PPMRJ</h1>
+            {{ $home->header }}</h1>
         <h1 class="mb-4 text-xl font-bold text-white lg:text-2xl">
-            Bandung Selatan</h1>
-        <p class="mb-4 text-base font-normal text-left text-gray-300 md:text-xl">Pondok Pesantren Mahasiswa
-            Roudhotul Jannah (PPMRJ) Bandung Selatan menyediakan lingkungan yang kondusif
-            untuk belajar dan berkembang, menggabungkan
-            pendidikan agama dengan studi akademis.</p>
+            {{ $home->subheader }}</h1>
+        <p class="mb-4 text-base font-normal text-left text-gray-300 md:text-xl">{{ $home->description }}</p>
         <a href="#"
             class="inline-flex py-3 px-10 text-base font-medium text-center text-white rounded-lg bg-lime-700 hover:bg-lime-800 ">
             Registrasi
@@ -98,15 +95,15 @@
 <div class="bg-green-700 my-5 p-6 md:p-10">
     <div class="flex flex-row justify-around text-center text-white font-semibold">
         <div class="flex flex-col gap-1 md:gap-2">
-            <p class="text-lg md:text-2xl rounded-full underline underline-offset-4">4</p>
+            <p class="text-lg md:text-2xl rounded-full underline underline-offset-4">{{ $home->guruCount }}</p>
             <p class="text-sm md:text-xl">Dewan Guru</p>
         </div>
         <div class="flex flex-col gap-1 md:gap-2">
-            <p class="text-lg md:text-2xl rounded-full underline underline-offset-4">20</p>
+            <p class="text-lg md:text-2xl rounded-full underline underline-offset-4">{{ $home->studentCount }}</p>
             <p class="text-sm md:text-xl">Mahasiswa</p>
         </div>
         <div class="flex flex-col gap-1 md:gap-2">
-            <p class="text-lg md:text-2xl rounded-full underline underline-offset-4">150</p>
+            <p class="text-lg md:text-2xl rounded-full underline underline-offset-4">{{ $home->alumniCount }}</p>
             <p class="text-sm md:text-xl">Alumni</p>
         </div>
     </div>
