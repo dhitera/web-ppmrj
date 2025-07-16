@@ -108,7 +108,9 @@ Route::prefix('admin')->middleware(['auth', 'permission:view admin dashboard'])-
         Route::post('/settings/toggle', [SettingsController::class, 'toggle'])->name('admin.settings.toggle');
     });
 
-    Route::get('/registration', [RegistrationController::class, 'adminShow'])->name('admin.registration');
-    Route::get('/registration/edit', [RegistrationController::class, 'edit'])->name('registration.edit');
-    Route::post('/registration/update', [RegistrationController::class, 'update'])->name('registration.update');
+    Route::middleware('permission:manage registration')->group(function () {
+        Route::get('/registration', [RegistrationController::class, 'adminShow'])->name('admin.registration');
+        Route::get('/registration/edit', [RegistrationController::class, 'edit'])->name('registration.edit');
+        Route::post('/registration/update', [RegistrationController::class, 'update'])->name('registration.update');
+    });
 });

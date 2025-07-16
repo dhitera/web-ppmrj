@@ -25,6 +25,7 @@ class RolePermissionSeeder extends Seeder
             'manage structure',
             'manage users',
             'manage announcements',
+            'manage registration',
         ];
 
         foreach ($permissions as $permission) {
@@ -39,6 +40,7 @@ class RolePermissionSeeder extends Seeder
             'manage structure',
             'manage users',
             'manage announcements',
+            'manage registration',
         ]);
 
         $kreatifRole = Role::firstOrCreate(['name' => 'kreatif']);
@@ -51,6 +53,7 @@ class RolePermissionSeeder extends Seeder
         $panitiaOm->givePermissionTo([
             'view admin dashboard',
             'manage announcements',
+            'manage registration',
         ]);
         // Migrate existing users based on email (no role column dependency)
         $users = User::all();

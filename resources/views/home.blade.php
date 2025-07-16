@@ -53,9 +53,8 @@
 </div>
 
 {{-- About Section --}}
-<div id="about"></div>
 <div>
-    <p class="text-center text-4xl font-semibold py-5 mt-16 uppercase">About Us</p>
+    <p class="text-center text-4xl font-semibold py-5 mt-16 uppercase">Tentang Kami</p>
     <p class="mx-10 md:mx-24 text-center font-semibold text-gray-600 text-lg md:text-2xl">Pondok Pesantren Mahasiswa
         Roudhotul
         Jannah atau
@@ -92,6 +91,24 @@
                 didalam maupun diluar PPM</p>
         </div>
 
+    </div>
+</div>
+
+{{-- Data Section --}}
+<div class="bg-green-700 my-5 p-6 md:p-10">
+    <div class="flex flex-row justify-around text-center text-white font-semibold">
+        <div class="flex flex-col gap-1 md:gap-2">
+            <p class="text-lg md:text-2xl rounded-full underline underline-offset-4">4</p>
+            <p class="text-sm md:text-xl">Dewan Guru</p>
+        </div>
+        <div class="flex flex-col gap-1 md:gap-2">
+            <p class="text-lg md:text-2xl rounded-full underline underline-offset-4">20</p>
+            <p class="text-sm md:text-xl">Mahasiswa</p>
+        </div>
+        <div class="flex flex-col gap-1 md:gap-2">
+            <p class="text-lg md:text-2xl rounded-full underline underline-offset-4">150</p>
+            <p class="text-sm md:text-xl">Alumni</p>
+        </div>
     </div>
 </div>
 

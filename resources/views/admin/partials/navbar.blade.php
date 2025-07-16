@@ -128,10 +128,13 @@
                     </li>
                     @endcan
 
+                    @can('manage registration')
                     <li>
                         <a href="{{ route('admin.registration') }}"
                             class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group {{ Route::currentRouteName() === 'admin.registration' ? ' bg-gray-200' : 'hover:bg-gray-100'}}">Registrasi</a>
                     </li>
+                    @endcan
+
                     @can('manage announcements')
                     <li>
                         <a href="{{ route('admin.announcement') }}"
