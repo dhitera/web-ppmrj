@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\About;
 use App\Models\User;
 use App\Models\Activity;
 use App\Models\Structure;
@@ -148,6 +149,14 @@ class DatabaseSeeder extends Seeder
             'guruCount' => 4,
             'studentCount' => 80,
             'alumniCount' => 200
+        ]);
+
+        About::create([
+            'description' => 'PPMRJ adalah lembaga pendidikan yang menggabungkan pendidikan agama dengan studi akademis, menyediakan lingkungan yang kondusif untuk belajar dan berkembang.',
+            'vision' => 'Menjadi lembaga pendidikan terkemuka yang mengintegrasikan ilmu agama dan umum.',
+            'mission' => 'Menyediakan pendidikan berkualitas tinggi, membentuk karakter santri yang berakhlak mulia, dan mempersiapkan mereka untuk menjadi pemimpin masa depan.',
+            'galleryTitle' => 'Galeri Kegiatan PPMRJ',
+            'galleryDescription' => 'Beberapa kegiatan di PPMRJ',
         ]);
 
         Storage::disk('public')->deleteDirectory('');

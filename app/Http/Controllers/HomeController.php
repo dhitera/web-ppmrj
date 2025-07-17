@@ -73,6 +73,7 @@ class HomeController extends Controller
             'header' => 'required|string|max:255',
             'subheader' => 'required|string|max:255',
             'description' => 'required|string|max:255',
+            'notificationMsg' => 'nullable|string|max:255',
             'guruCount' => 'required|integer|min:0',
             'studentCount' => 'required|integer|min:0',
             'alumniCount' => 'required|integer|min:0',
@@ -86,6 +87,7 @@ class HomeController extends Controller
         $home->header = $request->input('header');
         $home->subheader = $request->input('subheader');
         $home->description = $request->input('description');
+        $home->notificationMsg = $request->input('notificationMsg');
         $home->guruCount = $request->input('guruCount');
         $home->studentCount = $request->input('studentCount');
         $home->alumniCount = $request->input('alumniCount');

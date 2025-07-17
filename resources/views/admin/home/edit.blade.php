@@ -32,6 +32,13 @@
 
         </div>
         <div class="mb-3">
+            <label for="notificationMsg" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pesan
+                Notifikasi</label>
+            <input type="text" id="notificationMsg" name="notificationMsg"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Pesan Notifikasi" value="{{ $home->notificationMsg }}" />
+        </div>
+        <div class="mb-3">
             <label for="guruCount" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Total Dewan
                 Guru</label>
             <div class="relative flex items-center max-w-[8rem]">

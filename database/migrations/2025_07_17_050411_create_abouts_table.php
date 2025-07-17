@@ -11,15 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('homes', function (Blueprint $table) {
+        Schema::create('abouts', function (Blueprint $table) {
             $table->id();
-            $table->string('header')->default('PPMRJ');
-            $table->string('subheader')->default('Bandung Selatan');
             $table->string('description');
-            $table->string('notificationMsg')->nullable();
-            $table->integer('guruCount')->default(0);
-            $table->integer('studentCount')->default(0);
-            $table->integer('alumniCount')->default(0);
+            $table->string('vision');
+            $table->string('mission');
+            $table->string('galleryTitle');
+            $table->string('galleryDescription');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('homes');
+        Schema::dropIfExists('abouts');
     }
 };

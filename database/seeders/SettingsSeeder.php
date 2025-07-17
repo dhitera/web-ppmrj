@@ -16,10 +16,10 @@ class SettingsSeeder extends Seeder
     {
         $settings = [
             [
-                'key' => 'show_registration_notification',
+                'key' => 'show_notification',
                 'value' => 'true',
-                'display_name' => 'Notifikasi Pendaftaran',
-                'description' => 'Tampilkan banner notifikasi pendaftaran di halaman utama'
+                'display_name' => 'Pengumuman',
+                'description' => 'Tampilkan banner notifikasi di halaman utama'
             ],
             [
                 'key' => 'enable_registration_page',

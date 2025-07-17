@@ -120,8 +120,8 @@
                     </li>
 
                     <li>
-                        <a href="#"
-                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group {{ Route::currentRouteName() === '/' ? ' bg-gray-200' : 'hover:bg-gray-100'}}">About</a>
+                        <a href="{{ route('admin.about') }}"
+                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group {{ Route::currentRouteName() === 'admin.about' ? ' bg-gray-200' : 'hover:bg-gray-100'}}">About</a>
                     </li>
 
                     @can('manage structure')

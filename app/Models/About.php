@@ -6,17 +6,15 @@ use Spatie\MediaLibrary\HasMedia;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Home extends Model implements HasMedia
+class About extends Model implements HasMedia
 {
     use InteractsWithMedia;
 
     protected $fillable = [
-        'header',
-        'subheader',
         'description',
-        'notificationMsg',
-        'guruCount',
-        'studentCount',
-        'alumniCount',
+        'vision',
+        'mission',
+        'galleryTitle',
+        'galleryDescription',
     ];
 }

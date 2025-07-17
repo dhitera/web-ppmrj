@@ -54,9 +54,6 @@
                 <div>
                     <h2 class="mb-6 text-sm font-semibold uppercase ">Contact</h2>
                     <ul class=" dark:text-gray-400 font-medium break-words">
-                        <li class="">
-                            <a href="/" class="hover:underline ">082312201910</a>
-                        </li>
                         <li>
                             <a href="/" class="hover:underline">ppmhs.roudhotuljannah@gmail.com</a>
                         </li>
@@ -104,7 +101,7 @@
         </div>
         <hr class="my-6 border-gray-400 sm:mx-auto dark:border-gray-700 lg:my-8" />
         <div class="sm:flex sm:items-center sm:justify-center">
-            <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="/"
+            <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2025 <a href="/"
                     class="hover:underline">PPMRJ™</a>. All Rights Reserved.
             </span>
         </div>

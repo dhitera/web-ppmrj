@@ -3,7 +3,7 @@
 @section('container')
 @inject('settingsService', 'App\Services\SettingsService')
 
-@if($settingsService->getBool('show_registration_notification', true))
+@if($settingsService->getBool('show_notification', true))
 <div id="sticky-banner" tabindex="-1"
     class="fixed top-24 start-0 z-50 flex justify-between w-full p-3 border-b border-gray-200 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 opacity-80">
     <div class="flex items-center mx-auto">
@@ -16,8 +16,10 @@
                 </svg>
                 <span class="sr-only">Light bulb</span>
             </span>
-            <span>Pendaftaran Mahasiswa Baru telah dibuka! Silahkan daftar <a href="{{ route('registration') }}"
+            {{-- <span>Pendaftaran Mahasiswa Baru telah dibuka! Silahkan daftar <a href="{{ route('registration') }}"
                     class="inline font-medium text-blue-600 underline dark:text-blue-500 underline-offset-2 decoration-600 dark:decoration-500 decoration-solid hover:no-underline">disini!</a></span>
+            --}}
+            <span>{{ $home->notificationMsg }}</span>
         </p>
     </div>
     <div class="flex items-center">
@@ -36,12 +38,13 @@
 {{-- Hero Section --}}
 <div class="bg-auto bg-center bg-no-repeat bg-gray-500 bg-blend-multiply md:h-[150vh] md:bg-cover"
     style="background-image: url('{{ $home->getFirstMediaUrl('images') ?: asset('/img/blankphoto.jpeg') }}');">
-    <div class="px-4 mx-5 md:mx-20 md:text-left py-40 w-1/2">
+    <div class="px-4 mx-5 md:mx-20 md:text-left py-40 w-full md:w-1/2 pr-8 md:pr-0">
         <h1 class="mb-4 text-3xl font-extrabold text-white md:text-4xl lg:text-5xl">
             {{ $home->header }}</h1>
         <h1 class="mb-4 text-xl font-bold text-white lg:text-2xl">
             {{ $home->subheader }}</h1>
-        <p class="mb-4 text-base font-normal text-left text-gray-300 md:text-xl">{{ $home->description }}</p>
+        <p class="mb-4 text-base font-normal text-left text-gray-300 md:text-xl max-w-4xl md:max-w-none">{{
+            $home->description }}</p>
         <a href="#"
             class="inline-flex py-3 px-10 text-base font-medium text-center text-white rounded-lg bg-lime-700 hover:bg-lime-800 ">
             Registrasi

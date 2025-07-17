@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ActivityController;
@@ -12,11 +13,7 @@ use App\Http\Controllers\StructureController;
 // ketika akses / maka menjalankan fungsi view
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/about', function () {
-    return view('about', [
-        "title" => "About"
-    ]);
-})->name('about');
+Route::get('/about', [AboutController::class, 'index'])->name('about');
 
 Route::get('/structure', [StructureController::class, 'show'])->name('structure');
 
@@ -69,6 +66,13 @@ Route::prefix('admin')->middleware(['auth', 'permission:view admin dashboard'])-
     Route::get('/home', [HomeController::class, 'adminShow'])->name('admin.home');
     Route::get('/home/edit', [HomeController::class, 'edit'])->name('home.edit');
     Route::post('/home/update', [HomeController::class, 'update'])->name('home.update');
+
+    Route::get('/about', [AboutController::class, 'adminShow'])->name('admin.about');
+    Route::get('/about/editPage', [AboutController::class, 'editPage'])->name('about.editPage');
+    Route::post('/about/updatePage', [AboutController::class, 'updatePage'])->name('about.updatePage');
+    Route::get('/about/editGallery', [AboutController::class, 'editGallery'])->name('about.editGallery');
+    Route::post('/about/updateGallery', [AboutController::class, 'updateGallery'])->name('about.updateGallery');
+    Route::delete('/about/deleteGalleryImage', [AboutController::class, 'deleteGalleryImage'])->name('about.deleteGalleryImage');
 
     // Structure Management
     Route::middleware('permission:manage structure')->group(function () {
