@@ -24,6 +24,8 @@ class RolePermissionSeeder extends Seeder
             'manage activities',
             'manage structure',
             'manage users',
+            'manage home page',
+            'manage about page',
             'manage announcements',
             'manage registration',
         ];
@@ -33,7 +35,7 @@ class RolePermissionSeeder extends Seeder
         }
 
         // Create roles and assign permissions
-        $adminRole = Role::firstOrCreate(['name' => 'admin']);
+        $adminRole = Role::firstOrCreate(['name' => 'Admin']);
         $adminRole->givePermissionTo([
             'view admin dashboard',
             'manage activities',
@@ -41,15 +43,22 @@ class RolePermissionSeeder extends Seeder
             'manage users',
             'manage announcements',
             'manage registration',
+            'manage home page',
+            'manage about page',
         ]);
 
-        $kreatifRole = Role::firstOrCreate(['name' => 'kreatif']);
-        $kreatifRole->givePermissionTo([
+        $itRole = Role::firstOrCreate(['name' => 'Divisi IT']);
+        $itRole->givePermissionTo([
             'view admin dashboard',
             'manage activities',
+            'manage home page',
+            'manage about page',
+            'manage structure',
+            'manage announcements',
+            'manage registration',
         ]);
 
-        $panitiaOm = Role::firstOrCreate(['name' => 'panitia']);
+        $panitiaOm = Role::firstOrCreate(['name' => 'Panitia']);
         $panitiaOm->givePermissionTo([
             'view admin dashboard',
             'manage announcements',
@@ -63,18 +72,18 @@ class RolePermissionSeeder extends Seeder
 
             // Assign roles based on email since role column no longer exists
             if ($user->email === 'admin@gmail.com') {
-                $user->assignRole('admin');
+                $user->assignRole('Admin');
             } elseif ($user->email === 'panitia@gmail.com') {
-                $user->assignRole('panitia');
+                $user->assignRole('Panitia');
             } else {
                 // Default role for all other users
-                $user->assignRole('kreatif');
+                $user->assignRole('Divisi IT');
             }
         }
 
         $this->command->info('Roles and permissions created successfully!');
-        $this->command->info('Admin users: ' . User::role('admin')->count());
-        $this->command->info('Kreatif users: ' . User::role('kreatif')->count());
-        $this->command->info('Panitia: ' . User::role('panitia')->count());
+        $this->command->info('Admin users: ' . User::role('Admin')->count());
+        $this->command->info('Divisi IT users: ' . User::role('Divisi IT')->count());
+        $this->command->info('Panitia: ' . User::role('Panitia')->count());
     }
 }

@@ -36,9 +36,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::create([
-            'name' => 'Kreatif PPM',
-            'email' => 'kreatif@gmail.com',
-            'password' => 'kreatif'
+            'name' => 'Divisi IT PPM',
+            'email' => 'divisiit@gmail.com',
+            'password' => 'divisiit'
         ]);
 
         User::create([

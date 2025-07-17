@@ -60,19 +60,29 @@ Route::prefix('admin')->middleware(['auth', 'permission:view admin dashboard'])-
     // User Management
     Route::middleware('permission:manage users')->group(function () {
         Route::get('/user-list', [AdminController::class, 'userList'])->name('admin.userList');
+        Route::get('/user-list/add', [AdminController::class, 'userAdd'])->name('admin.userAdd');
+        Route::post('/user-list/store', [AdminController::class, 'userStore'])->name('admin.userStore');
+        Route::get('/user-list/{id}/edit', [AdminController::class, 'userEdit'])->name('admin.userEdit');
+        Route::post('/user-list/{id}/update', [AdminController::class, 'userUpdate'])->name('admin.userUpdate');
+        Route::delete('/user-list/{id}/delete', [AdminController::class, 'userDelete'])->name('admin.userDelete');
     });
 
     // Home Management
-    Route::get('/home', [HomeController::class, 'adminShow'])->name('admin.home');
-    Route::get('/home/edit', [HomeController::class, 'edit'])->name('home.edit');
-    Route::post('/home/update', [HomeController::class, 'update'])->name('home.update');
+    Route::middleware('permission:manage home page')->group(function () {
+        Route::get('/home', [HomeController::class, 'adminShow'])->name('admin.home');
+        Route::get('/home/edit', [HomeController::class, 'edit'])->name('home.edit');
+        Route::post('/home/update', [HomeController::class, 'update'])->name('home.update');
+    });
 
-    Route::get('/about', [AboutController::class, 'adminShow'])->name('admin.about');
-    Route::get('/about/editPage', [AboutController::class, 'editPage'])->name('about.editPage');
-    Route::post('/about/updatePage', [AboutController::class, 'updatePage'])->name('about.updatePage');
-    Route::get('/about/editGallery', [AboutController::class, 'editGallery'])->name('about.editGallery');
-    Route::post('/about/updateGallery', [AboutController::class, 'updateGallery'])->name('about.updateGallery');
-    Route::delete('/about/deleteGalleryImage', [AboutController::class, 'deleteGalleryImage'])->name('about.deleteGalleryImage');
+    // About Management
+    Route::middleware('permission:manage about page')->group(function () {
+        Route::get('/about', [AboutController::class, 'adminShow'])->name('admin.about');
+        Route::get('/about/editPage', [AboutController::class, 'editPage'])->name('about.editPage');
+        Route::post('/about/updatePage', [AboutController::class, 'updatePage'])->name('about.updatePage');
+        Route::get('/about/editGallery', [AboutController::class, 'editGallery'])->name('about.editGallery');
+        Route::post('/about/updateGallery', [AboutController::class, 'updateGallery'])->name('about.updateGallery');
+        Route::delete('/about/deleteGalleryImage', [AboutController::class, 'deleteGalleryImage'])->name('about.deleteGalleryImage');
+    });
 
     // Structure Management
     Route::middleware('permission:manage structure')->group(function () {
@@ -82,7 +92,7 @@ Route::prefix('admin')->middleware(['auth', 'permission:view admin dashboard'])-
         Route::get('/test-pdf', [StructureController::class, 'viewpdf'])->name('test.pdf');
     });
 
-    // Activity Management - admin and kreatif can access
+    // Activity Management
     Route::middleware('permission:manage activities')->group(function () {
         Route::get('/activity', [ActivityController::class, 'adminShow'])->name('admin.activity');
         Route::get('/activity/add', [ActivityController::class, 'add'])->name('activity.add');
@@ -92,6 +102,7 @@ Route::prefix('admin')->middleware(['auth', 'permission:view admin dashboard'])-
         Route::delete('/activity/delete/{id}', [ActivityController::class, 'delete'])->name('activity.delete');
     });
 
+    // Announcement Management
     Route::middleware('permission:manage announcements')->group(function () {
         Route::get('/announcement', [AnnouncementController::class, 'adminShow'])->name('admin.announcement');
         Route::get('/announcement/add-santri', [AnnouncementController::class, 'createSantri'])->name('announcement.addSantri');
@@ -110,6 +121,7 @@ Route::prefix('admin')->middleware(['auth', 'permission:view admin dashboard'])-
         Route::post('/settings/toggle', [SettingsController::class, 'toggle'])->name('admin.settings.toggle');
     });
 
+    // Registration Management
     Route::middleware('permission:manage registration')->group(function () {
         Route::get('/registration', [RegistrationController::class, 'adminShow'])->name('admin.registration');
         Route::get('/registration/edit', [RegistrationController::class, 'edit'])->name('registration.edit');
