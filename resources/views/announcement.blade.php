@@ -6,11 +6,18 @@
         <p class="text-4xl font-bold">Pengumuman Seleksi</p>
         <p class="text-xl my-3">Selamat kepada peserta yang telah lolos seleksi santri baru PPMRJ!</p>
         <div class="bg-white/10 p-3 rounded-lg shadow-lg mt-5 w-2/3 lg:w-1/3 mx-auto">
+            @if($santri->where('gelombang', 'gelombang2')->count() > 0)
             <p class="text-base lg:text-lg">📢 Seleksi Gelombang 2 sudah diumumkan!!</p>
+            @elseif($santri->where('gelombang', 'gelombang1')->count() > 0)
+            <p class="text-base lg:text-lg">📢 Seleksi Gelombang 1 sudah diumumkan!!</p>
+            @else
+            <p class="text-base lg:text-lg">📢 Pengumuman akan segera diumumkan!</p>
+            @endif
         </div>
     </div>
 
     <div class="bg-white p-10">
+        @if($santri->where('gelombang', 'gelombang1')->count() > 0)
         <p class="text-3xl font-bold text-center underline underline-offset-4">Pengumuman Seleksi Gelombang 1</p>
 
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg my-5">
@@ -40,7 +47,9 @@
                 </tbody>
             </table>
         </div>
+        @endif
 
+        @if($santri->where('gelombang', 'gelombang2')->count() > 0)
         <p class="text-3xl font-bold text-center underline underline-offset-4">Pengumuman Seleksi Gelombang 2</p>
 
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg my-5">
@@ -70,6 +79,7 @@
                 </tbody>
             </table>
         </div>
+        @endif
 
         <div class="bg-gray-100/50 p-7 rounded-lg shadow-lg mt-5">
             <div class="flex flex-row gap-2 my-2">
