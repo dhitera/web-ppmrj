@@ -89,7 +89,6 @@ Route::prefix('admin')->middleware(['auth', 'permission:view admin dashboard'])-
         Route::get('/structure', [StructureController::class, 'adminShow'])->name('admin.structure');
         Route::get('/structure/{id}/edit', [StructureController::class, 'edit'])->name('structure.edit');
         Route::post('/structure/{id}/update', [StructureController::class, 'update'])->name('structure.update');
-        Route::get('/test-pdf', [StructureController::class, 'viewpdf'])->name('test.pdf');
     });
 
     // Activity Management
