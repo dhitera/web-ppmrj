@@ -10,7 +10,6 @@
 6. [Panduan Penggunaan](#panduan-penggunaan)
 7. [Struktur File](#struktur-file)
 8. [API Endpoints](#api-endpoints)
-9. [Informasi Kontak PPMRJ](#informasi-kontak-ppmrj)
 
 ## Gambaran Umum Proyek
 
